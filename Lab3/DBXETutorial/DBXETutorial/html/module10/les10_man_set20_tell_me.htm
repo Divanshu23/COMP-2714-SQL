@@ -1,0 +1,204 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Starting and Shutting Down the Database</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!--
+ 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+//-->
+</script></head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>Starting and Shutting Down the Database </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les10_man_usr10_tell_me.htm">previous</a></font>|<font size="2"><a href="les10_man_usr10_show_me.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" -->
+<table width="438" border="0">
+  <tr>
+    <td width="288" height="98"><span class="bodycopy">Some administration tasks require shutting down and then restarting the database. These include changing the values of some initialization parameters and changing memory settings for the instance. Oracle Database XE can be shut down and restarted using the following methods: </span></td>
+    <td width="140"><span class="bodycopy"><img src="images/datab030.gif" width="131" height="108"></span></td>
+  </tr>
+</table>
+
+      <ul>
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer1','','show')" onMouseOut="MM_showHideLayers('Layer1','','hide')">Shut down the database using the graphical desktop</a>
+          <div id="Layer1" style="position:absolute; width:351px; height:384px; z-index:3; left: 210px; top: 36px; visibility: hidden;"> 
+            <table summary="" width="351" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td width="347"> 
+                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td height="471"><p class="bodycopy">To shut down the database using the graphical desktop, do one of the following:</p>
+                        <blockquote>
+                          <p class="bodycopy"><strong>Windows</strong></p>
+                        </blockquote>
+                        <ol>
+                          <li class="bodycopy"> Log in to the Oracle Database XE host computer as a Windows administrator.</li>
+                          <li class="bodycopy">Click Start, and then select Programs > Oracle Database 10<em>g</em> Express Edition > Stop Database.</li>
+                        </ol>                        <blockquote>
+                          <p class="bodycopy"></span>. </p>
+                          <p class="bodycopy"><strong>Linux</strong></p>
+                        </blockquote>                        
+                        <ol>
+                          <li class="bodycopy">Log in to the Oracle Database XE host computer as a user who can be authenticated with operating system authentication.</li>
+                          <li class="bodycopy">Stop the database.
+                            <ul>
+                              <li class="bodycopy">On Linux with Gnome: In the Applications menu, select Oracle Database 10<em>g</em> Express Edition > Stop Database. </li>
+                              <li>On Linux with KDE: Click the icon for the K Menu, and then select Oracle Database 10<em>g</em> Express Edition > Stop Database.</li>
+                            </ul>
+                          </li>
+                      </ol>                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+           
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer2','','show')" onMouseOut="MM_showHideLayers('Layer2','','hide')">Shut down the database using SQL*Plus </a>
+          <div id="Layer2" style="position:absolute; width:418px; height:65px; z-index:3; left: 53px; top: 213px; visibility: hidden;"> 
+            <table summary="" width="413" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td width="409">                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td>  <p class="bodycopy">&nbsp; </p>                      
+                        <p class="bodycopy">You must use a local connection to the database to shut it down with SQL*Plus. </p>
+                        <p class="bodycopy">To shut down the database using SQL*Plus: </p>
+                        <ol>
+                          <li>
+                            <p class="bodycopy">Log in to the Oracle Database XE host computer as a user who is a member of an operating system administrative user group.</p>
+                          
+                          <li>
+                            <p class="bodycopy">If it is not already opened, open a terminal session or command window. </p>
+                          <li>
+                            <p class="bodycopy">Linux platform only: Ensure that environment variables are set properly. </p>
+                            <p class="bodycopy">At the operating system prompt, enter the following command: </p>
+                          <li><span class="style1">sqlplus / as sysdba </span>                            
+                            <p class="bodycopy">Note that you do not need to supply a database username and password because you already provided database administrator credentials to the operating system. </p>
+                          <li>
+                            <p class="bodycopy">At the SQL*Plus prompt, enter the following command: </p>
+                            <span class="style1">shutdown immediate
+                            </span>                            
+                            <p class="bodycopy">Note that this command may take a short while to complete. If the command is successful, it displays the following output:</li>
+                        </ol>                        
+                        <blockquote>
+                          <p class="style1"> Database closed.</p>
+                          <p class="style1">Database dismounted.                          </p>
+                          <p class="style1">ORACLE instance shut down. </p>
+                        </blockquote></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer3','','show')" onMouseOut="MM_showHideLayers('Layer3','','hide')">Start up the database using the graphical desktop</a>
+          <div id="Layer3" style="position:absolute; z-index:3; left: 351px; top: 102px; height: 423px; width: 331px; visibility: hidden;"> 
+            <table summary="" width="335" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td width="331"> 
+                  <table width="100%" height="209" border="0" cellpadding="2" cellspacing="0" bgcolor="#FFFFFF" summary="">
+                    <tr> 
+                      <td>  <p class="bodycopy">To start up the database using the graphical desktop: </p>
+                        <p class="bodycopy"><strong>Windows</strong></p>
+                        <p class="bodycopy"> Log in to the Oracle Database XE host computer as a Windows administrator (that is, as a user who is a member of the Administrator group). This is normally the user <span class="style1">oraclexe</span>.</p>
+                        <p class="bodycopy">Click Start, and then select Programs > Oracle Database 10<em>g</em> Express Edition > Start Database. </strong></p>                        
+                        <p class="bodycopy"><strong>Linux</strong></p>
+                        <p class="bodycopy"> Log in to the Oracle Database XE host computer as a user who can be authenticated with operating system authentication.</p>                        <blockquote>
+                          <p class="bodycopy">On Linux with Gnome: In the Applications menu, select Oracle Database 10<em>g</em> Express Edition, and then select Start Database.</p>
+                          <p class="bodycopy">On Linux with KDE: Click the icon for the K Menu, and then select Oracle Database 10<em>g</em> Express Edition > Start Database.</p>
+                        </blockquote>                        
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div> 
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer4','','show')" onMouseOut="MM_showHideLayers('Layer4','','hide')">Start up the database using SQL*Plus</a>
+          <div id="Layer4" style="position:absolute; z-index:3; left: 98px; top: 158px; height: 539px; width: 356px; visibility: hidden;">
+            <table summary="" width="354" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966">
+                <td>
+                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr>
+                      <td>
+                        <p class="bodycopy">To start up the database using SQL*Plus:</p>
+                        <ol>
+                          <li class="bodycopy">Log in to the Oracle Database XE host computer as a user who is a member of an operating system user group. With Linux, this is normally the <span class="style1">oraclexe</span> user. With Windows, it is normally the user who installed Oracle Database XE.</li>
+                          <li class="bodycopy">If it is not already opened, open a terminal session or command window.
+              
+Linux platform only: Ensure that environment variables are set properly.</li>
+                          <li class="bodycopy"> At the operating system prompt, enter the following command: <span class="style1">sqlplus / as sysdba</span></li>
+                          <li class="bodycopy">At the SQL*Plus prompt, enter the following command:
+                            <p class="bodycopy style1">startup</p>
+                          </li>
+                        </ol>                        
+                        <p class="bodycopy"> If the command is successful, it displays the following output: </p>
+                        <p class="bodycopy">                          <span class="style1">ORACLE instance started.</span></p>
+                        <p class="bodycopy style1"> Total System Global Area  599785472 bytes</p>
+                        <p class="bodycopy style1"> Fixed Size                  1220804 bytes                  </p>
+                        <p class="bodycopy style1">Variable Size             180358972 bytes                    </p>
+                        <p class="bodycopy style1">Database Buffers          415236096 bytes                      </p>
+                        <p class="bodycopy style1">Redo Buffers                2969600 bytes                        </p>
+                        <p class="bodycopy style1">Database mounted.</p>
+                        <p class="bodycopy style1"> Database opened.</p>
+                      <p class="bodycopy"><strong>Note: </strong>System Global Area sizes vary depending on the amount of physical memory on your Oracle Database XE host computer.</p></td>
+                    </tr>
+                </table></td>
+              </tr>
+            </table>
+        </div>        
+      </ul>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

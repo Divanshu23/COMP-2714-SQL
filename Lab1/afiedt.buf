@@ -1,0 +1,7 @@
+CREATE TABLE Customer2
+(CustNo CHAR(4) NOT NULL
+,Name VARCHAR(20) NOT NULL
+,Balance DECIMAL(9,2) NOT NULL
+,PRIMARY KEY (CustNo)
+)
+/

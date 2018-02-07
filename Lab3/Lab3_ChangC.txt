@@ -1,0 +1,171 @@
+SQL> --
+SQL> -- ---------------------------------------------------------
+SQL> --  The following comments will also be sent / spooled to the
+SQL> --    output text file to identify the ownership of the
+SQL> --    Oracle SQL*Plus work.
+SQL> --
+SQL> --  COMP 2714
+SQL> --  SET 2D
+SQL> --  Lab Lab03
+SQL> --
+SQL> --  Chang, Chih-Hsi    A01017955
+SQL> --  email: cchang189@my.bcit.ca
+SQL> --
+SQL> -- ---------------------------------------------------------
+SQL> --
+SQL> --3. Type in the following command to show the structure of the USER_SOURCE view: (can do this using a script)
+SQL> DESCRIBE USER_SOURCE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(30)
+ TYPE                                               VARCHAR2(12)
+ LINE                                               NUMBER
+ TEXT                                               VARCHAR2(4000)
+
+SQL> --Use the following statement to list the stored procedures, functions and triggers you have in your hr schema:
+SQL> SELECT DISTINCT name, type
+  2  FROM user_source
+  3  ORDER BY name, type;
+
+NAME                           TYPE                                             
+------------------------------ ------------                                     
+ADD_JOB_HISTORY                PROCEDURE                                        
+AUDIT_EMPSAL_VALUES            TRIGGER                                          
+GET_SAL                        FUNCTION                                         
+RAISE_AMOUNT                   PROCEDURE                                        
+SECURE_DML                     PROCEDURE                                        
+SECURE_EMP                     TRIGGER                                          
+SECURE_EMPLOYEES               TRIGGER                                          
+UPDATE_JOB_HISTORY             TRIGGER                                          
+
+8 rows selected.
+
+SQL> --4. Use the following statement to display the trigger code, then copy and paste it into your Word document.
+SQL> SELECT text
+  2  FROM user_source
+  3  WHERE type = 'TRIGGER' AND name = 'SECURE_EMP'
+  4  ORDER BY line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+trigger "SECURE_EMP"                                                            
+BEFORE                                                                          
+insert or update or delete on "EMPLOYEES"                                       
+for each row                                                                    
+begin                                                                           
+                                                                                
+IF (TO_CHAR(SYSDATE,'DY') IN ('SAT', 'SUN') ) OR                                
+ (TO_CHAR(SYSDATE, 'HH24')                                                      
+    NOT BETWEEN '08' AND '18') THEN                                             
+ IF DELETING THEN RAISE_APPLICATION_ERROR(                                      
+  -20502, 'You may delete from EMPLOYEES table '||                              
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+          'only during business hours.');                                       
+ ELSIF INSERTING THEN RAISE_APPLICATION_ERROR(                                  
+  -20500, 'You may insert into EMPLOYEES table '||                              
+          'only during business hours.');                                       
+ ELSIF UPDATING('SALARY') THEN                                                  
+  RAISE_APPLICATION_ERROR(-20503, 'You may '||                                  
+   'update SALARY only during business hours.');                                
+ ELSE RAISE_APPLICATION_ERROR(-20504, 'You may '||                              
+   'update EMPLOYEES table only during '||                                      
+   'normal hours.');                                                          
+ END IF;                                                                        
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+END IF;                                                                         
+end;                                                                            
+
+24 rows selected.
+
+SQL> SELECT text
+  2  FROM user_source
+  3  WHERE type = 'TRIGGER' AND name = 'AUDIT_EMPSAL_VALUES'
+  4  ORDER BY line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+trigger "AUDIT_EMPSAL_VALUES"                                                   
+AFTER                                                                           
+update of "SALARY" on "EMPLOYEES"                                               
+for each row                                                                    
+begin                                                                           
+INSERT INTO audit_record_tb1                                                    
+ VALUES(sys_context('userenv', 'current_user'),                                 
+       sysdate, :old.employee_id, :old.salary, :new.salary);                    
+EXCEPTION                                                                       
+ WHEN OTHERS THEN                                                               
+  RAISE_APPLICATION_ERROR(-10001, 'audit trigger failure');                     
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+end;                                                                            
+
+12 rows selected.
+
+SQL> --5. Use the following statement to display the procedure code, then copy and paste it into your Word document:
+SQL> SELECT text
+  2  FROM user_source
+  3  WHERE type = 'PROCEDURE' AND name = 'RAISE_AMOUNT'
+  4  ORDER BY line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+procedure "RAISE_AMOUNT"                                                        
+(p_id IN NUMBER,                                                                
+p_raise_amt IN NUMBER default 0)                                                
+is                                                                              
+begin                                                                           
+UPDATE employees                                                                
+ SET salary = salary * (1+p_raise_amt)                                          
+ WHERE employee_id = p_id;                                                      
+end;                                                                            
+
+9 rows selected.
+
+SQL> --6. Use the following statement to display the function code, then copy and paste it into your Word document.
+SQL> SELECT text
+  2  FROM user_source
+  3  WHERE type = 'FUNCTION' AND name = 'GET_SAL'
+  4  ORDER BY line;
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+FUNCTION get_sal                                                                
+ (p_id IN employees.employee_id%TYPE,                                           
+  p_increment IN NUMBER := 1)                                                   
+RETURN NUMBER                                                                   
+IS                                                                              
+ v_sal employees.salary%TYPE := 0;                                              
+ e_toomuch EXCEPTION;                                                           
+BEGIN                                                                           
+  IF p_increment < 1 or p_increment > 1.5 THEN                                  
+    RAISE e_toomuch;                                                            
+  END IF;                                                                       
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+  SELECT salary * p_increment                                                   
+    INTO v_sal                                                                  
+    FROM employees                                                              
+    WHERE employee_id = p_id;                                                   
+RETURN v_sal;                                                                   
+ EXCEPTION                                                                      
+   WHEN e_toomuch THEN                                                          
+    htp.print('Invalid increment amount');                                      
+   WHEN NO_DATA_FOUND THEN                                                      
+    htp.print('Invalid employee Id');                                           
+   WHEN OTHERS THEN                                                             
+
+TEXT                                                                            
+--------------------------------------------------------------------------------
+    htp.print('Error occured in processing');                                   
+END get_sal;                                                                    
+
+24 rows selected.
+
+SQL> --
+SQL> SPOOL OFF

@@ -1,0 +1,61 @@
+DECLARE
+ v_user varchar2(30);
+BEGIN
+ SELECT SYS_CONTEXT('userenv', 'current_user') INTO v_user from dual;
+ dbms_output.put_line('Reported at: '||TO_CHAR(SYSDATE, 'DD-Mon-YY HH:MIPM'));
+ dbms_output.put_line('User = '||v_user);
+END;
+
+
+IF (TO_CHAR(SYSDATE,'DY') IN ('SAT', 'SUN') ) OR
+ (TO_CHAR(SYSDATE, 'HH24')
+    NOT BETWEEN '08' AND '18') THEN
+ IF DELETING THEN RAISE_APPLICATION_ERROR(
+  -20502, 'You may delete from EMPLOYEES table '||
+          'only during business hours.');
+ ELSIF INSERTING THEN RAISE_APPLICATION_ERROR(
+  -20500, 'You may insert into EMPLOYEES table '||
+          'only during business hours.');
+ ELSIF UPDATING('SALARY') THEN
+  RAISE_APPLICATION_ERROR(-20503, 'You may '||
+   'update SALARY only during business hours.');
+ ELSE RAISE_APPLICATION_ERROR(-20504, 'You may '||
+   'update EMPLOYEES table only during '||
+   'business hours.');
+ END IF;
+END IF;
+
+
+
+INSERT INTO audit_record_tb1
+ VALUES(sys_context('userenv', 'current_user'),
+       sysdate, :old.employee_id, :old.salary, :new.salary);
+EXCEPTION
+ WHEN OTHERS THEN
+  RAISE_APPLICATION_ERROR(-10001, 'audit trigger failure');
+
+CREATE TABLE audit_record_tb1
+(
+user_value varchar2(55),
+data_recorded timestamp(6)
+);
+
+
+UPDATE employees
+ SET salary = salary * (1+p_raise_amt)
+ WHERE employee_id = p_id;
+
+
+CREATE OR REPLACE FUNCTION get_sal
+ (p_id IN employees.employee_id%TYPE,
+  p_increment IN NUMBER := 1)
+RETURN NUMBER
+IS
+ v_sal employees.salary%TYPE := 0;
+BEGIN
+ SELECT salary * p_increment
+   INTO v_sal
+   FROM employees
+   WHERE employee_id = p_id;
+ RETURN v_sal;
+END get_sal;

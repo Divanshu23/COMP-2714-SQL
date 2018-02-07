@@ -1,0 +1,244 @@
+SQL> --
+SQL> -- ---------------------------------------------------------
+SQL> --  The following comments will also be sent / spooled to the
+SQL> --    output text file to identify the ownership of the
+SQL> --    Oracle SQL*Plus work.
+SQL> --
+SQL> --  COMP 2714
+SQL> --  SET 2D
+SQL> --  Assignment Asn01
+SQL> --
+SQL> --  Manandhar, Nirajan A01025660
+SQL> --  email: nmanandhar@my.bcit.ca
+SQL> --
+SQL> --  Chang, Chih-Hsi    A01017955
+SQL> --  email: cchang189@my.bcit.ca
+SQL> --
+SQL> -- ---------------------------------------------------------
+SQL> --
+SQL> ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD';
+
+Session altered.
+
+SQL> --
+SQL> SELECT SYSDATE
+  2  FROM DUAL;
+
+SYSDATE                                                                         
+----------                                                                      
+2018-01-19                                                                      
+
+SQL> --
+SQL> -- Q1.Drop tables first before creating
+SQL> DROP TABLE Booking;
+
+Table dropped.
+
+SQL> DROP TABLE Room;
+
+Table dropped.
+
+SQL> DROP TABLE Hotel;
+
+Table dropped.
+
+SQL> DROP TABLE Guest;
+
+Table dropped.
+
+SQL> DROP TABLE OldBooking;
+
+Table dropped.
+
+SQL> --
+SQL> -- Q2. Create the Hotel and Room tables
+SQL> -- Hotel table
+SQL> CREATE TABLE Hotel
+  2  (
+  3  hotelNo          CHAR(4)           NOT NULL
+  4  ,hotelName        VARCHAR2(50)     NOT NULL
+  5  ,city             VARCHAR2(30)     NOT NULL
+  6  ,CONSTRAINT PKHotel PRIMARY KEY (hotelNo)
+  7  );
+
+Table created.
+
+SQL> -- Room table
+SQL> CREATE TABLE Room
+  2  (
+  3  roomNo           SMALLINT          NOT NULL
+  4  ,hotelNo          CHAR(4)          NOT NULL
+  5  ,type             VARCHAR(10)      NOT NULL
+  6  ,price            DECIMAL(5,2)     NOT NULL
+  7  ,CONSTRAINT PKRoom PRIMARY KEY (roomNo, hotelNo)
+  8  ,CONSTRAINT FKhotelNo FOREIGN KEY (hotelNo) REFERENCES Hotel (hotelNo)
+  9  ,CONSTRAINT chkrmn CHECK(roomNo BETWEEN 1 AND 100)
+ 10  ,CONSTRAINT chktyp CHECK(type IN ('Single', 'Double', 'Family'))
+ 11  ,CONSTRAINT chkpri CHECK(price BETWEEN 10.00 AND 100.00)
+ 12  );
+
+Table created.
+
+SQL> --
+SQL> -- Q3. Create the Guest and Booking tables
+SQL> -- Guest table
+SQL> CREATE TABLE Guest
+  2  (
+  3  guestNo          CHAR(5)           NOT NULL
+  4  ,guestName        VARCHAR2(50)     NOT NULL
+  5  ,guestAddress     VARCHAR2(100)    NOT NULL
+  6  ,CONSTRAINT PKGuest PRIMARY KEY (guestNo)
+  7  );
+
+Table created.
+
+SQL> -- Booking table
+SQL> CREATE TABLE Booking
+  2  (
+  3  hotelNo          CHAR(4)          NOT NULL
+  4  ,guestNo          CHAR(5)         NOT NULL
+  5  ,dateFrom         DATE            NOT NULL
+  6  ,dateTo           DATE            NOT NULL
+  7  ,roomNo           SMALLINT        NOT NULL
+  8  ,CONSTRAINT PKBooking PRIMARY KEY (hotelNo, guestNo, dateFrom)
+  9  ,CONSTRAINT FKguestNo FOREIGN KEY (guestNo) REFERENCES Guest (guestNo)
+ 10  ,CONSTRAINT FKhotelNo2 FOREIGN KEY (hotelNo, roomNo) REFERENCES Room (hotelNo, roomNo)
+ 11  ,CONSTRAINT chkrmn2 CHECK(roomNo BETWEEN 1 AND 100)
+ 12  );
+
+Table created.
+
+SQL> --
+SQL> -- Q4. Insert 3 rows of data to each table
+SQL> -- Hotel table
+SQL> INSERT INTO Hotel
+  2          VALUES('H001','No.1 Hotel','Vancouver');
+
+1 row created.
+
+SQL> INSERT INTO Hotel
+  2          VALUES('H002','No.2 Hotel','Toronto');
+
+1 row created.
+
+SQL> INSERT INTO Hotel
+  2          VALUES('H003','No.3 Hotel','Burnaby');
+
+1 row created.
+
+SQL> -- Room table
+SQL> INSERT INTO Room
+  2          VALUES(1,'H001','Single',25.99);
+
+1 row created.
+
+SQL> INSERT INTO Room
+  2          VALUES(2,'H001','Double',60.59);
+
+1 row created.
+
+SQL> INSERT INTO Room
+  2          VALUES(1,'H002','Family',50.00);
+
+1 row created.
+
+SQL> -- Guest table
+SQL> INSERT INTO Guest
+  2          VALUES('G0001','Nirajan','Surrey');
+
+1 row created.
+
+SQL> INSERT INTO Guest
+  2          VALUES('G0002','Hank','Vancouver');
+
+1 row created.
+
+SQL> INSERT INTO Guest
+  2          VALUES('G0003','Richman','Richmond');
+
+1 row created.
+
+SQL> -- Booking table
+SQL> INSERT INTO Booking
+  2          VALUES('H001','G0002',DATE'2018-01-01',DATE'2018-01-05',1);
+
+1 row created.
+
+SQL> INSERT INTO Booking
+  2          VALUES('H001','G0001',DATE'2018-01-10',DATE'2018-01-12',2);
+
+1 row created.
+
+SQL> INSERT INTO Booking
+  2          VALUES('H002','G0002',DATE'2018-01-17',DATE'2018-01-20',1);
+
+1 row created.
+
+SQL> --
+SQL> -- Q5.Change the domains of the columns in Room table
+SQL> ALTER TABLE Room
+  2          DROP CONSTRAINT chktyp;
+
+Table altered.
+
+SQL> ALTER TABLE Room
+  2          ADD CONSTRAINT chktyp CHECK(type IN ('Single', 'Double', 'Family', 'Deluxe'));
+
+Table altered.
+
+SQL> ALTER TABLE Room
+  2          ADD
+  3          discount SMALLINT DEFAULT 0
+  4          CONSTRAINT chkdic CHECK(discount BETWEEN 0 AND 30);
+
+Table altered.
+
+SQL> --
+SQL> -- Q6.Change the data of Room table and Booking table
+SQL> -- Room table
+SQL> UPDATE Room
+  2          SET price = price * 1.15
+  3          WHERE hotelNo = 'H001' AND type = 'Double';
+
+1 row updated.
+
+SQL> -- Booking table
+SQL> UPDATE Booking
+  2          SET dateFrom = dateFrom - 1
+  3          , dateTo = dateTo + 1
+  4          WHERE hotelNo = 'H001' AND guestNo = 'G0001' AND dateFrom = DATE'2018-01-10';
+
+1 row updated.
+
+SQL> --
+SQL> -- Q7. OldBooking table
+SQL> -- a. Create OldBooking table
+SQL> CREATE TABLE OldBooking
+  2  (
+  3  hotelNo          CHAR(4)          NOT NULL
+  4  ,guestNo          CHAR(5)         NOT NULL
+  5  ,dateFrom         DATE            NOT NULL
+  6  ,dateTo           DATE            NOT NULL
+  7  ,roomNo           SMALLINT        NOT NULL
+  8  ,CONSTRAINT PKOLDBooking PRIMARY KEY (hotelNo, guestNo, dateFrom)
+  9  );
+
+Table created.
+
+SQL> --b.
+SQL> INSERT INTO OldBooking
+  2          SELECT *
+  3          FROM Booking
+  4          WHERE dateTo < DATE'2018-01-15';
+
+2 rows created.
+
+SQL> --c.
+SQL> DELETE
+  2          FROM Booking
+  3          WHERE dateTo < DATE'2018-01-15';
+
+2 rows deleted.
+
+SQL> --
+SQL> SPOOL OFF

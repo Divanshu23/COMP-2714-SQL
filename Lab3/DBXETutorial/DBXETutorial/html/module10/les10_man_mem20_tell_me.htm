@@ -1,0 +1,62 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Managing Memory</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!--
+ 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+//-->
+</script></head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>SGA and PGA </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les10_man_mem10_tell_me.htm">previous</a></font>|<font size="2"><a href="les10_man_mem10_show_me.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p><img src="images/sga.gif" width="126" height="163" align="right"> </p>
+      <p class="navheader">SGA</p>
+      <p class="bodycopy"><br>
+      The SGA is a memory area that contains data and control information for the instance.&#13;The SGA includes the following data structures:</p>
+      <ul>
+        <li><span class="bodycopy"> <strong>Database buffer cache: </strong> Caches blocks of data retrieved from the database &#13;</span></li>
+        <li><span class="bodycopy"><strong>Redo log buffer: </strong> Caches redo information (used for instance recovery) until it can be written to the physical redo log files stored on the disk&#13;</span></li>
+        <li><span class="bodycopy"><strong>Shared pool: </strong> Caches various constructs that can be shared among users&#13;</span></li>
+        <li><span class="bodycopy"><strong>Large pool: </strong> Is an optional area that provides large memory allocations for certain large processes, such as Oracle backup and recovery operations, and I/O server processes&#13;</span></li>
+        <li><span class="bodycopy"><strong>Java pool: </strong> Is used for all session-specific Java code and data within the Java Virtual Machine (JVM)&#13;</span></li>
+        <li><span class="bodycopy"><strong>Streams pool: </strong> Is used by Oracle Streams&#13;When you start the instance by using Enterprise Manager or SQL*Plus, the amount of memory allocated for the SGA is displayed.</span></li>
+      </ul>
+      <p class="bodycopy">The <span class="style1">SGA_TARGET </span>parameter specifies the total amount of space available to the SGA. If you set <span class="style1">SGA_TARGET</span> to 0, Automatic Shared Memory Management is disabled. </p>
+      <p class="navheader">PGA</p>
+      <p class="bodycopy">A Program Global Area (PGA) is a memory region that contains data and control information for each server process. An Oracle server process services a client's requests. Each server process has its own private PGA that is created when the server process is started. Access to the PGA is exclusive to that server process, and the PGA is read and written only by the Oracle code acting on its behalf. &#13;With the dynamic SGA infrastructure, the size of the database buffer cache, the shared pool, the large pool, the Java pool, and the Streams pool changes without shutting down the instance. &#13;</p>
+      <p class="bodycopy">The <span class="style1"><strong>PGA_TARGET</strong></span> is the total amount of memory allocated to the PGA </p>
+      <p class="bodycopy">&nbsp;</p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

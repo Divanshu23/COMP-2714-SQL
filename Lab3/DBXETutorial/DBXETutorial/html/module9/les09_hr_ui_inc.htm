@@ -1,0 +1,202 @@
+<html lang="en">
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>hr_ui.inc</title>
+<!-- #EndEditable -->
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../library/stylesheet.css" type="text/css">
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="10" topmargin="10" marginwidth="10" marginheight="10" link="#663300" vlink="#996633" alink="#FF6600" onLoad="window.focus()">
+<table summary="" border="0" cellspacing="4" cellpadding="0" width="100%">
+  <tr valign="top"> 
+    <td height="20">
+      <!-- #BeginEditable "pagetitle" -->
+      <h3 class="topstoryhead">hr_ui.inc</h3>
+      <!-- #EndEditable --></td>
+    <td height="20">
+      <div align="right"><a href="javascript:printWindow()"><img src="../../images/print.gif" width="29" height="28" border="0" alt="Print"></a> 
+        <a href="javascript:window.close();"><img src="../../images/close.gif" width="29" height="28" border="0" alt="Close"></a> 
+    </div>    </td>
+  </tr>
+  <tr valign="top"> 
+    <td height="20" colspan="2"> <!-- #BeginEditable "text" -->
+      <p class="bodycopy">The PHP source code for the user interface functions is:</p>
+      <pre>&lt;?php
+
+<a name="ui_islogged_on"></a>function ui_islogged_in()
+{
+  return isset($_SESSION['loggedin']);
+}
+
+<a name="ui_print_login_form"></a>function ui_print_login_form($posturl)
+{
+  echo &lt;&lt;&lt;END
+  &lt;form method=&quot;post&quot; action=&quot;$posturl&quot;&gt;
+  &lt;table&gt;
+  &lt;tr&gt;
+  &lt;td&gt;Username:&lt;/td&gt;&lt;td&gt;&lt;input name=&quot;username&quot; type=&quot;text&quot; size=&quot;20&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+  &lt;td&gt;Password:&lt;/td&gt;&lt;td&gt;&lt;input name=&quot;password&quot; type=&quot;password&quot; size=&quot;20&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;&amp;nbsp;&lt;input type=&quot;reset&quot; value=&quot;Clear&quot;&gt;
+  &lt;/form&gt;
+END;
+}</pre>
+      <pre><a name="ui_print_header"></a>function ui_print_header($title)
+{
+  $title = htmlentities($title);
+  echo &lt;&lt;&lt;END
+  &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+    &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-Type&quot;
+    content=&quot;text/html; charset=ISO-8859-1&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;
+  &lt;title&gt;Sperling: $title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;h1&gt;$title&lt;/h1&gt;
+END;
+  if (ui_islogged_in()) {
+    echo '&lt;div class=&quot;logout&quot;&gt;';
+    echo &quot;Logged in as &lt;b&gt;&lt;i&gt;&quot;.$_SESSION['UN'].&quot;&lt;/i&gt;&lt;/b&gt;&amp;nbsp;&quot;;
+    echo '&lt;a href=&quot;'.$_SERVER['SCRIPT_NAME'].'?do=logout&quot;&gt;Logout&lt;/a&gt;';
+    echo '&lt;/div&gt;';
+  }
+}
+
+<a name="ui_print_footer"></a>function ui_print_footer($date)
+{
+  $date = htmlentities($date);
+  echo &lt;&lt;&lt;END
+  &lt;br&gt;
+  &lt;div class=&quot;footer&quot;&gt;
+    &lt;div class=&quot;date&quot;&gt;$date&lt;/div&gt;
+    &lt;div class=&quot;company&quot;&gt;Sperling&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+END;
+}</pre>
+      <pre><a name="ui_print_department"></a>function ui_print_department($deptrecs)
+{
+  if (!$deptrecs) {
+    echo '&lt;p&gt;No Department found&lt;/p&gt;';
+}
+else {
+  echo &lt;&lt;&lt;END
+  &lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Id&lt;/th&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Number of&lt;br&gt;Employees&lt;/th&gt;
+    &lt;th&gt;Manager&lt;/th&gt;
+    &lt;th&gt;Location&lt;/th&gt;
+  &lt;/tr&gt;
+END;
+  foreach ($deptrecs as $dept) {
+    echo '&lt;tr&gt;';
+    echo '&lt;td&gt;'.htmlentities($dept['DEPARTMENT_ID']).'&lt;/td&gt;';
+    echo '&lt;td&gt;'.htmlentities($dept['DEPARTMENT_NAME']).'&lt;/td&gt;';
+    echo '&lt;td&gt;&lt;a href='.$_SERVER['SCRIPT_NAME'].'?do=showemp&amp;deptid='.
+        htmlentities($dept['DEPARTMENT_ID']).'&gt;'.
+        htmlentities($dept['NUMBER_OF_EMPLOYEES']).'&lt;/a&gt;&lt;/td&gt;';
+    echo '&lt;td&gt;'.htmlentities($dept['MANAGER_NAME']).'&lt;/td&gt;';
+    echo '&lt;td&gt;'.htmlentities($dept['COUNTRY_NAME']).'&lt;/td&gt;';
+    echo '&lt;/tr&gt;';
+  }
+  echo &lt;&lt;&lt;END
+  &lt;/table&gt;
+END;
+  }
+}</pre>
+      <pre><a name="ui_print_employees"></a>function ui_print_employees($employeerecords)
+{
+  if (!$employeerecords) {
+    echo '&lt;p&gt;No Employee found&lt;/p&gt;';
+  }
+  else {
+    echo &lt;&lt;&lt;END
+    &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Employee&lt;br&gt;ID&lt;/th&gt;
+      &lt;th&gt;Employee&lt;br&gt;Name&lt;/th&gt;
+      &lt;th&gt;Hiredate&lt;/th&gt;
+      &lt;th&gt;Salary&lt;/th&gt;
+      &lt;th&gt;Commission&lt;br&gt;(%)&lt;/th&gt;
+    &lt;/tr&gt;
+END;
+    // Write one row per employee
+    foreach ($employeerecords as $emp) {
+      echo '&lt;tr&gt;';
+      echo '&lt;td align=&quot;right&quot;&gt;'.
+        htmlentities($emp['EMPLOYEE_ID']).'&lt;/td&gt;';
+      echo '&lt;td&gt;'.htmlentities($emp['EMPLOYEE_NAME']).'&lt;/td&gt;';
+      echo '&lt;td&gt;'.htmlentities($emp['HIRE_DATE']).'&lt;/td&gt;';
+      echo '&lt;td align=&quot;right&quot;&gt;'.
+        htmlentities($emp['SALARY']).'&lt;/td&gt;';
+      echo '&lt;td align=&quot;right&quot;&gt;'.
+        htmlentities($emp['COMMISSION_PCT']).'&lt;/td&gt;';
+      echo '&lt;/tr&gt;';
+    } 
+    echo &lt;&lt;&lt;END
+    &lt;/table&gt;
+END;
+  }
+  if (isset($_REQUEST['deptid'])) {
+    echo &lt;&lt;&lt;END
+    &lt;form&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Back&quot; onClick=&quot;javascript:history.back();&quot;&gt;
+    &lt;/form&gt;
+END;
+  }
+}</pre>
+      <pre><a name="ui_print_error"></a>function ui_print_error()
+{
+  ui_print_header('Error');
+  if (!isset($_SESSION['err'])) {
+    echo '&lt;p&gt;Unknown error&lt;/p&gt;';
+  }
+  else {
+    $message = $_SESSION['err'];
+    echo &quot;&lt;p&gt;Error at line {$message['LINE']} of &quot;.<br>         &quot;{$message['FILE']}&lt;/p&gt;&quot;; // Uncommented for debugging
+    echo &quot;&lt;p&gt;{$message['MESSAGE']}&lt;/p&gt;&quot;;
+    unset($_SESSION['err']);
+  }
+  echo &lt;&lt;&lt;END
+  &lt;form&gt;
+  &lt;input type=&quot;button&quot; value=&quot;Back&quot; onClick=&quot;javascript:history.back();&quot;&gt;
+  &lt;/form&gt;
+END;
+  ui_print_footer(date('Y-m-d H:i:s'));
+}
+
+?&gt;
+      </pre>
+      <p class="navheader">Additional Information </p>
+      <p class="bodycopy">These functions are called by <font face="Courier New, Courier, mono">hr.php</font>. These functions make extensive use of PHP's &quot;here document&quot; to output many HTML tags. It is important to be aware that the keyword <span class="style1">END</span> is used as a marker for the end of &quot;here document&quot; text. <span class="style1">END</span> must be at the start of the line; otherwise, it will be included as part of the text in &quot;here document&quot;.</p>
+      <p class="bodycopy"><strong>Note:</strong> The <font face="Courier New, Courier, mono">ui_print_header()</font> function uses a <font face="Courier New, Courier, mono">&lt;link&gt;</font> tag referencing the <a href="javascript:;" class="style1">styles.css</a> Cascading Style Sheet file. The CSS file is used to help with the appearance and usability of the application user interface.</p>
+      <p class="bodycopy"></p>
+      <p class="bodycopy">&nbsp; </p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+</html>

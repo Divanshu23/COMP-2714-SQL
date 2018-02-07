@@ -1,0 +1,71 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Getting Employee Information</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Getting Employee Information</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_get_dept_tm.htm">previous</a></font>|<font size="2"><a href="les09_run_php_app_sm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_db_rows.gif" width="100" height="154" align="right">The <font face="Courier New, Courier, mono"><a href="javascript:;" onClick="MM_openBrWindow('les09_hr_php.htm#construct_employees','popup','scrollbars=yes,width=600,height=300')">construct_employees()</a></font> function:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><span class="bodycopy">Builds and executes the query to obtain the employee records for a specific department</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink">Obtains the department ID from the <font face="Courier New, Courier, mono">deptid</font> HTTP request parameter. If this parameter is not set, then one of the conditions in the query <font face="Courier New, Courier, mono">WHERE</font> clause is structured to return all employee rows.</td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodylink">Calls <font face="Courier New, Courier, mono">ui_print_header()</font>, <font face="Courier New, Courier, mono">ui_print_employees()</font>, and <font face="Courier New, Courier, mono">ui_print_footer()</font> to generate the response page</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">The employee query demonstrates the use of a bind variable in the <span class="style3">WHERE</span> clause. A bind variable is a named string prefixed with a colon (<font face="Courier New, Courier, mono">:</font>), as in the following example:</p>
+      <pre class="bodycopy"><font face="Courier New, Courier, mono">...
+WHERE department_id = :did
+...</font></pre>
+      <p class="bodycopy">A bind variable is a placeholder for an actual value that is supplied when the query is executed. </p>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">$bindargs</font> PHP array variable is created to store the value associated with the query bind variable before it is executed. <font face="Courier New, Courier, mono">$bindargs</font> is supplied as a parameter to the <font face="Courier New, Courier, mono">db_do_query()</font> function.</p>
+      <p class="bodycopy"><strong>Note:</strong> The <font face="Courier New, Courier, mono">ui_print_employees()</font> function, which generates the HTML table of employee data, detects the presence of the <font face="Courier New, Courier, mono">deptid</font> HTTP parameter and creates a Back button to enable the user to navigate back to the page displaying the department information.</p>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

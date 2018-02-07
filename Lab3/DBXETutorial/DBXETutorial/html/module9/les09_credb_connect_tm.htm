@@ -1,0 +1,63 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Creating a Database Connection</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Creating a Database Connection</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_create_db_conn_prop_tm.htm">previous</a></font>|<font size="2"><a href="les09_cregen_query_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_dbms.gif" width="108" height="128" align="right">The <a href="javascript:;" onClick="MM_openBrWindow('les09_hr_db_inc.htm#do_connect','popup','scrollbars=yes,width=600,height=300')">hr_db.inc</a> file contains a <font face="Courier New, Courier, mono">db_connect()</font> function that calls the OCI8 <font face="Courier New, Courier, mono">oci_connect()</font> library function for creating a database connection.</p>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">db_connect()</font> function provides two parameters:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><p class="bodycopy"><font face="Courier New, Courier, mono">$un</font> for the username, with default value <font face="Courier New, Courier, mono">ORA_CON_UN</font> </p></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy"><font face="Courier New, Courier, mono">$pw</font> for the password, with default value <font face="Courier New, Courier, mono">ORA_CON_PW</font></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">db_connect()</font> function returns a database connection identifier, or <font face="Courier New, Courier, mono">false</font> on error. The <font face="Courier New, Courier, mono">db_connect()</font> function uses <font face="Courier New, Courier, mono">ORA_CON_DB</font> for connecting to the target database instance.</p>
+      <p class="bodycopy"><strong>Note:</strong> After each page request, a database connection opened with the <font face="Courier New, Courier, mono">oci_connect()</font> call is implicitly closed. If you want, you can explicitly close the database connection by calling the <font face="Courier New, Courier, mono">oci_close()</font> function. </p>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

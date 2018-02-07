@@ -1,0 +1,77 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/3showme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Configuring User Directories in Apache</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#663300" vlink="#996633" alink="#FF6600">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-3showme.gif" width="484" height="52" border="0" alt="Show Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>Configuring User Directories in Apache </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" -->
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_test_apache_sm.htm">previous</a></font>|<font size="2"><a href="les09_install_zc4o_sm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+    <!-- #EndEditable --></td>
+  </tr>
+  <tr>
+    <td width="10">
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy">Sheila's PHP development team requires a nonroot user environment in which to develop the PHP code. To enable the developers to store PHP code in their owner user directories, Sheila edits the Apache Web Server configuration file <font face="Courier New, Courier, mono">/etc/httpd/conf/httpd.conf</font> and sets the <span class="style1">UserDir</span> directive.</p>
+      <p class="bodycopy">To enable user directories in the <font face="Courier New, Courier, mono">httpd.conf</font> configuration file, Sheila must perform the following changes to the file:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Comment out the line<font face="Courier New, Courier, mono"> UserDir &quot;disable&quot;</font></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Uncomment the line <font face="Courier New, Courier, mono">UserDir public_html</font></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">After the changes have been made, Sheila must restart the Apache Web Server by using the following command:</p>
+      <p class="bodycopy"><font face="Courier New, Courier, mono">$ apachectl restart</font> </p>
+      <p class="bodycopy">Each developer must create a <font face="Courier New, Courier, mono">public_html</font> subdirectory in their <font face="Courier New, Courier, mono">$HOME </font>directory. The PHP and HTML files for the application are stored in the <font face="Courier New, Courier, mono">public_html</font> directory to be accessible from a browser.</p>
+      <p class="bodycopy">As a browser user, the initial part of the URL entered would be:</p>
+      <p class="bodycopy"><font face="Courier New, Courier, mono">http://host/<strong>~</strong>user/target.html</font></p>
+      <p class="bodycopy">Here, <font face="Courier New, Courier, mono">user</font> is replaced with a registered operating system username.</p>
+      <p class="bodycopy">Watch Sheila configure user directories and restart Apache as the <font face="Courier New, Courier, mono">root</font> user. As a nonroot user, Sheila creates the <font face="Courier New, Courier, mono">public_html</font> subdirectory and a default <font face="Courier New, Courier, mono">index.html</font> file, and uses a browser to access the <font face="Courier New, Courier, mono">index.html</font> file.</p>
+      <table border="0" cellspacing="0" cellpadding="2">
+        <tr> 
+          <td width="80" align="right" class="bodycopy"><img src="../../images/demonstration.gif" alt="Launch Demonstration" width="42" height="31" border="0"></td>
+          <td width="185" class="rightnav"> 
+            <p class="bodycopy"><a href="javascript:;" onClick="MM_openBrWindow('setuserdir.htm','popup','scrollbars=yes,resizable=yes,width=800,height=600')">Show Me and Try It </a></p>
+          </td>
+        </tr>
+      </table>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+<!-- #BeginEditable "print" --><!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

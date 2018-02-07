@@ -1,0 +1,62 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Defining Database Connection Properties</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Defining Database Connection Properties</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_conf_err_rep_sm.htm">previous</a></font>|<font size="2"><a href="les09_credb_connect_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_dbms.gif" width="108" height="128" align="right">The <a href="javascript:;" class="style3" onClick="MM_openBrWindow('les09_hr_cn_inc.htm','popup','scrollbars=yes,width=600,height=300')">hr_cn.inc</a> file defines PHP named constants for three database connection properties:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><font face="Courier New, Courier, mono">ORA_CON_UN</font> - set to the <strong>hr </strong>database user</td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy"><font face="Courier New, Courier, mono">ORA_CON_PW</font> - set to the <strong>hr</strong> user password </td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><p class="bodycopy"><font face="Courier New, Courier, mono">ORA_CON_DB</font> - set to the database connection identifier string <span class="style3"><strong>//localhost/XE</strong></span>, which is the default name for the Oracle Database Express Edition installed on the same host as the Apache Web server</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">db_connect()</font> function uses <font face="Courier New, Courier, mono">ORA_CON_DB</font> for connecting to the target database instance. The username and password constants are assigned as default values for the two parameters of <font face="Courier New, Courier, mono">db_connect()</font>, respectively. Therefore, if <font face="Courier New, Courier, mono">db_connect()</font> is called without arguments, the default values apply. Otherwise, the supplied parameter values are used.</p>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

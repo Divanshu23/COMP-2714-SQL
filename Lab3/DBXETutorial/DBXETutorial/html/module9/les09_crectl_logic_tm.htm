@@ -1,0 +1,53 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Creating the Control Logic</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Creating the Control Logic</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_disp_emp_tm.htm">previous</a></font>|<font size="2"><a href="les09_page_handling_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_control_logic.gif" width="136" height="146" align="right">The <font face="Courier New, Courier, mono"><a href="javascript:;" onClick="MM_openBrWindow('les09_hr_php.htm','popup','scrollbars=yes,width=600,height=300')">hr.php</a></font> file contains all the application control logic. The <font face="Courier New, Courier, mono">hr.php</font> file contains the code that starts the application when initiated by an HTTP request from a browser.</p>
+      <p class="bodycopy">The PHP application processes the following code to call functions that access the database and create the user interface: </p>
+      <pre class="bodycopy"><font face="Courier New, Courier, mono">require('hr_cn.inc');
+require('hr_db.inc');
+require('hr_ui.inc');</font></pre>
+      <p class="bodycopy">The code is made up of the main page control logic call the login page, and respond to subsequent user requests.</p>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,55 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Managing Memory</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!--
+ 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+//-->
+</script></head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>Managing Memory </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les10_man_set10_show_me.htm">previous</a></font>|<font size="2"><a href="les10_man_mem20_tell_me.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p><img src="images/sga.gif" width="126" height="163" align="right"> <span class="bodycopy">Each running Oracle database is associated with an Oracle instance. When a database is started on a database server, the Oracle software allocates a shared memory area called the System Global Area (SGA) and starts several Oracle background processes. This combination of the SGA and the Oracle processes is called an Oracle instance.&#13;After starting an instance, the Oracle software associates the instance with a specific database. This is called mounting the database. The database is then ready to be opened, which makes it accessible to authorized users. Multiple instances can execute concurrently on the same computer, each accessing its own physical database.&#13;</span></p>
+      <p><span class="bodycopy"> An Oracle database uses memory structures and processes to manage and access the database. 
+
+
+ The basic memory structures associated with an Oracle instance include:</span></p>
+      <ul>
+        <li><span class="bodycopy"> &#13;<strong>System Global Area (SGA): </strong> Shared by all server and background processes</span></li>
+        <li><span class="bodycopy"><strong>Program Global Area (PGA): </strong> Private to each server and background proces, with one PGA for each process</span></li>
+      </ul>
+      <p class="bodycopy">The Oracle database uses initialization parameters to create and configure memory structures. The Oracle Database XE automatic memory management capabilities automatically adjust the memory distribution among the various SGA and PGA subcomponents for optimal performance. These adjustments are made within the boundaries of your total SGA and PGA target values. </p>
+      <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

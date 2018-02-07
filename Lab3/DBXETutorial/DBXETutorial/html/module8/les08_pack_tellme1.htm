@@ -1,0 +1,100 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Using Packages</title>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!--
+ 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>Using Packages  </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les08_pack_whylearnit.htm">previous</a></font>|<font size="2"><a href="les08_pack_spec_tellme.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" -->
+    <p class="navheader">Package Components</p>
+    <p class="bodycopy">You create a package in two parts:</p>
+    <ul>
+      <li class="bodycopy"> The package specification is the interface to your applications. It declares the public types, variables, constants, exceptions, cursors, and subprograms available for use. The package specification may also include PRAGMAs, which are directives to the compiler.</li>
+      <li class="bodycopy"> The package body defines its own subprograms and must fully implement subprograms declared in the specification part. The package body may also define PL/SQL constructs, such as types variables, constants, exceptions, and cursors. </li>
+    </ul>
+    <p class="navheader"><img src="images/pack2.gif" width="331" height="227"></p>
+    <div id="PrivLayer" style="position:absolute; width:297px; height:100px; z-index:3; left: 149px; top: 513px; visibility: hidden" onMouseOver="MM_showHideLayers('Layer2','','show')" onMouseOut="MM_showHideLayers('Layer2','','hide')">
+      <table summary="" width="250" border="0" cellspacing="0" cellpadding="2">
+        <tr bgcolor="#999966">
+          <td>
+            <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+              <tr>
+                <td>
+                  <p class="bodycopy">Private components are placed in the package body and can be referenced only by other 
+                    constructs within the same package body. Private components can reference the package public 
+                    components.</p>                  </td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+    </div>
+    <div id="PubLayer" style="position:absolute; width:294px; height:91px; z-index:8; left: 153px; top: 488px; visibility: hidden" onMouseOver="MM_showHideLayers('Layer9','','show')" onMouseOut="MM_showHideLayers('Layer9','','hide')">
+      <table summary="" width="250" border="0" cellspacing="0" cellpadding="2">
+        <tr bgcolor="#999966">
+          <td>
+            <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+              <tr>
+                <td>
+                  <p class="bodycopy">Public components are declared in the package specification. The specification defines a public 
+                    application programming interface (API) for users of package features and functionality. That is, 
+                    public components can be referenced from any Oracle server environment that is external to the 
+                    package.</p>                  </td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+    </div>
+    <p class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('PubLayer','','show')" onMouseOut="MM_showHideLayers('PubLayer','','hide')">Public components</a></p>
+    <p class="bodycopy">        <a href="javascript:;" onMouseOver="MM_showHideLayers('PrivLayer','','show','PubLayer','','hide')" onMouseOut="MM_showHideLayers('PrivLayer','','hide')">Private Components</a></p>
+    <p class="bodycopy">&nbsp;</p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

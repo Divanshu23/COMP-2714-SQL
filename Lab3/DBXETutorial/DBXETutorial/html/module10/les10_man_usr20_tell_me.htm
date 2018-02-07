@@ -1,0 +1,147 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Loading Data</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, mono}
+-->
+</style>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" usemap="#Map" border="0" alt="Tell Me"> 
+<map name="Map"> 
+  <area shape="rect" coords="437,0,478,22" href="javascript:;" alt="Glossary" title="Glossary" onClick="MM_openBrWindow('../general/glossary.htm','popup','scrollbars=yes,resizable=yes,width=550,height=125')">
+</map><table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"><b>Understanding Schemas, Roles and Privileges </b></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les10_man_usr10_tell_me.htm">previous</a></font>|<font size="2"><a href="les10_man_usr10_show_me.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" -->
+<table width="438" border="0">
+  <tr>
+    <td height="98"><p class="bodycopy">Users need privileges to access objects in  Oracle Database XE. The minimum privileges that users need are the connect and session privileges. In addition, they need system privileges that allow them to create objects. After users have created objects, they can grant privileges on their objects to other users. A group of privileges is called a role. </p>
+      <ul>
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer1','','show')" onMouseOut="MM_showHideLayers('Layer1','','hide')">User privileges</a>
+          <div id="Layer1" style="position:absolute; width:248px; height:176px; z-index:3; left: 222px; top: 88px; visibility: hidden;"> 
+            <table summary="" width="250" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td> 
+                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td><p class="bodycopy">User privileges:</p>
+                      <p class="bodycopy"> <strong> Object privileges</strong> are privileges granted on specific objects within a schema to other schemas. </p>
+                      <p class="bodycopy"><strong> Column privileges</strong> are column privileges granted on specific columns within a schema to other schemas. These are <span class="style1">INSERT, UPDATE</span> , and <span class="style1">REFERENCES </span>privileges on specific columns in a table.</p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+           
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer2','','show')" onMouseOut="MM_showHideLayers('Layer2','','hide')">Role privileges </a>
+          <div id="Layer2" style="position:absolute; width:248px; height:107px; z-index:3; left: 219px; top: 214px; visibility: hidden;"> 
+            <table summary="" width="250" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td> 
+                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td>  <p class="bodycopy">  <strong>Roles</strong> are collections of various privileges. Role privileges are privileges granted to a user through roles. Privileges can be granted to roles, and roles can in turn be granted to other roles or to users. For example, all DBA users can be granted the DBA role. </p>                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        <li class="bodycopy"><a href="javascript:;" onMouseOver="MM_showHideLayers('Layer3','','show')" onMouseOut="MM_showHideLayers('Layer3','','hide')">System privileges</a>
+          <div id="Layer3" style="position:absolute; z-index:3; left: 212px; top: 197px; height: 399px; width: 127px; visibility: hidden;"> 
+            <table summary="" width="250" border="0" cellspacing="0" cellpadding="2">
+              <tr bgcolor="#999966"> 
+                <td> 
+                  <table summary="" width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF">
+                    <tr> 
+                      <td>  <p class="bodycopy"><strong>System privileges</strong> are granted to enable users to create schema objects in their schema or in other schemas. 
+
+
+ A system privilege is the right to perform a particular action, or to perform an action on any schema objects of a particular type. For example, the privileges to create tablespaces and to delete the rows of any table in a database are system privileges.
+
+</p>                        </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div> 
+      </ul>
+      <p class="bodycopy"> Privileges are granted by using the <span class="style1">GRANT </span>command. If a system privilege is granted with<span class="style1"> ADMIN OPTION</span>, then it can be passed on by the grantee. If an object privilege is granted with<span class="style1"> GRANT OPTION</span>, then it can be passed on. </p>
+	   <p class="bodycopy">Oracle Database XE allows Sheila to view security reports with the Utilities interface. 
+    
+
+     Security reports enable Sheila to see privileges granted on database objects owned by other schemas. She can also use these reports to view database roles and system privileges grants.</p>      </td>
+    <td><span class="bodycopy"><img src="images/peop003.gif" width="113" height="124"></span></td>
+  </tr>
+</table>
+
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

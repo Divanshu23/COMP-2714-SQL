@@ -1,0 +1,47 @@
+2.1 500.
+
+2.2 400.
+
+2.3 The result showing on User2 is 500. No. Because the trasaction on User1 is not committed yet, the data in server which User2 qureies are not real updated.
+
+2.4 500 on User1, 500 on User2.
+Nothing happened.
+Before the transaction is committed, the change is undo, so the balance changes back to 500 which is before updated.
+
+3.1 500.
+
+3.2 400.
+
+3.3 The result showing on User2 is 500. No. Because the trasaction on User1 is not committed yet, the data in server which User2 qureies are not real updated.
+
+
+3.4 400 on User1. 400 on User2. 
+The database in server is updated.
+Before excuting 'COMMIT;' statement, the database in server is not be updated. After excuting 'COMMIT;' statement, the database is updated, so User2 gets the same result as User1.
+
+4.2 Before User1 excutes 'COMMIT;', User2 is pending, waitting the User1 finishing the transaction.
+After User1 excutes 'COMMIT;', the transaction on USER1 is finished, so User2 can update the data because there is no transaction incompleted.
+
+4.3 On User1, deadlock detected. Because when User1 is waitting User2 finish the transation, User2 execute one more transaction.
+
+4.4 On User2, deadlock detected.
+The old pending transaction will show deadlock detected.
+
+4.5 Excute the transaction user by user.
+In User1's:
+UPDATE Checking 
+SET curBal = curBal - 100 
+WHERE acctNo = 1;
+
+UPDATE Checking 
+SET curBal = curBal + 100 
+WHERE acctNo = 2;
+
+In User2's
+UPDATE Checking 
+SET curBal = curBal - 200 
+WHERE acctNo = 2;
+
+UPDATE Checking 
+SET curBal = curBal + 200 
+WHERE acctNo = 1;

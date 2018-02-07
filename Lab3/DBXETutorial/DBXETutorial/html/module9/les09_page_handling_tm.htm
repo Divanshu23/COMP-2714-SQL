@@ -1,0 +1,76 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Handling Requests</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead"> Handling Requests</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_crectl_logic_tm.htm">previous</a></font>|<font size="2"><a href="les09_login_page_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_control_logic.gif" width="136" height="146" align="right">The <font face="Courier New, Courier, mono"><a href="javascript:;" onClick="MM_openBrWindow('les09_hr_php.htm','popup','scrollbars=yes,width=600,height=300')">hr.php</a></font> file contains all the PHP application Web page request and response handling logic. The logic uses the PHP <font face="Courier New, Courier, mono">session_start()</font> function to store data as session state. Session state is used to track that the user has logged on and off, and for database error messages. </p>
+      <p class="bodycopy">The request handling logic depends on an HTTP request parameter, called <span class="style3">do</span>, whose value is used to determine the next page to be displayed.</p>
+      <p class="bodycopy">When a user first requests the <font face="Courier New, Courier, mono">hr.php</font> page, the <font face="Courier New, Courier, mono">do</font> HTTP parameter is not provided. Because the user has not logged in, the <font face="Courier New, Courier, mono">loggedin</font> session parameter is not set. Therefore, the request handler calls the <font face="Courier New, Courier, mono">do_login()</font> function to display the login page. </p>
+      <p class="bodycopy">Here is the page-handling logic:</p>
+      <pre class="bodycopy"><font face="Courier New, Courier, mono">if (!isset($_REQUEST['do']) &amp;&amp; !ui_islogged_in()) {
+  do_login();
+}
+else {
+  $doreq = isset($_REQUEST['do']) ? $_REQUEST['do'] : &quot;showdept&quot;;
+  if ($doreq == &quot;logout&quot;) {
+    do_logout();
+  }
+  elseif ($doreq == &quot;showemp&quot;) {
+    construct_employees();
+  }
+  else {
+    construct_departments();
+  }
+}</font></pre>
+      <p class="bodycopy">After the user has successfully logged in, an HTTP request without the <font face="Courier New, Courier, mono">do</font> parameter causes the department information to be displayed. Otherwise, when the <span class="style3">do</span> HTTP parameter is:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><span class="bodycopy"><font face="Courier New, Courier, mono">logout</font>, the user session is terminated and a logout page is displayed</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodylink"><span class="bodycopy"><font face="Courier New, Courier, mono">showemp</font>, the employees in the specified department are displayed. The department ID is obtained from an HTTP request parameter in the <font face="Courier New, Courier, mono">construct_employees()</font> function.</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>hr.php</title>
+<!-- #EndEditable -->
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../library/stylesheet.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="10" topmargin="10" marginwidth="10" marginheight="10" link="#663300" vlink="#996633" alink="#FF6600" onLoad="window.focus()">
+<table summary="" border="0" cellspacing="4" cellpadding="0" width="100%">
+  <tr valign="top"> 
+    <td height="20">
+      <!-- #BeginEditable "pagetitle" -->
+      <h3 class="topstoryhead">hr.php</h3>
+      <!-- #EndEditable --></td>
+    <td height="20">
+      <div align="right"><a href="javascript:printWindow()"><img src="../../images/print.gif" width="29" height="28" border="0" alt="Print"></a> 
+        <a href="javascript:window.close();"><img src="../../images/close.gif" width="29" height="28" border="0" alt="Close"></a> 
+    </div>    </td>
+  </tr>
+  <tr valign="top"> 
+    <td height="20" colspan="2"> <!-- #BeginEditable "text" -->
+      <p class="bodycopy">The PHP source code for the PHP appliation control logic:</p>
+      <pre>&lt;?php // File: hr.php
+
+require('hr_cn.inc');
+require('hr_db.inc');
+require('hr_ui.inc');
+
+// Main Control Logic		 
+session_start();
+if (!isset($_REQUEST['do']) &amp;&amp; !ui_islogged_in()) {
+  do_login();
+}
+else {
+  $doreq = isset($_REQUEST['do']) ? $_REQUEST['do'] : &quot;showdept&quot;;
+  if ($doreq == &quot;logout&quot;) {
+    do_logout();
+  }
+  elseif ($doreq == &quot;showemp&quot;) {
+    construct_employees();
+  }
+  else {
+    construct_departments();
+  } 
+}
+
+// Control Functions
+
+<a name="do_login"></a>function do_login()
+{
+  if (isset($_POST['username']) &amp;&amp; isset($_POST['password'])) {
+    $un = $_POST['username']; 
+    $pw = $_POST['password'];
+
+    $conn = db_connect($un, $pw);
+    if ($conn) {
+      $_SESSION['UN'] = $un;
+      $_SESSION['PW'] = $pw;
+      $_SESSION['loggedin'] = true;
+      header(&quot;Location: http://&quot;. 
+             $_SERVER['HTTP_HOST']. $_SERVER['SCRIPT_NAME']);
+      exit;
+    }
+    else {
+      ui_print_error();
+    }
+  }
+  else { 
+    ui_print_header('Login');
+    ui_print_login_form($_SERVER['SCRIPT_NAME']);
+    ui_print_footer(date('Y-m-d H:i:s'));
+  }
+}</pre>
+      <pre><a name="do_logout"></a>function do_logout()
+{
+  unset($_SESSION['loggedin']);
+  ui_print_header('Logout');
+  echo &quot;&lt;p&gt;You have logged out&lt;/p&gt;&quot;;
+  echo &quot;&lt;p&gt;&lt;a href=&quot;.$_SERVER['SCRIPT_NAME'].&quot;&gt;Login&lt;/a&gt;&lt;/p&gt;&quot;;
+  ui_print_footer(date('Y-m-d H:i:s'));
+}</pre>
+      <pre><a name="construct_departments"></a>function construct_departments()
+{
+  $query =
+    &quot;SELECT d.department_id, d.department_name,
+            substr(e.first_name,1,1)||'. '|| e.last_name manager_name,
+            c.country_name, count(e2.employee_id) number_of_employees
+     FROM departments d, employees e, locations l, 
+          countries c, employees e2
+     WHERE d.manager_id = e.employee_id
+     AND d.location_id = l.location_id
+     AND d.department_id = e2.department_id
+     AND l.country_id = c.country_id
+     GROUP BY d.department_id, d.department_name, 
+              substr(e.first_name,1,1)||'. '||e.last_name, 
+              c.country_name
+     ORDER BY d.department_id ASC&quot;;</pre>
+      <pre>  $un = $_SESSION['UN'];
+  $pw = $_SESSION['PW'];
+  $conn = db_connect($un, $pw);
+  if (!$conn) {
+    ui_print_error();
+  }
+  $dept = db_do_query($conn, $query);
+  if ($dept) {
+    ui_print_header('Departments');
+    ui_print_department($dept);
+    ui_print_footer(date('Y-m-d H:i:s'));
+  }
+  else {
+    ui_print_error();
+  }
+}</pre>
+      <pre><a name="construct_employees"></a>function construct_employees()
+{
+  $query =
+     &quot;SELECT e.employee_id,
+        substr(e.first_name,1,1) || '. '|| e.last_name as employee_name,
+        hire_date,
+        to_char(e.salary, '9999G999D99') as salary,
+        nvl(e.commission_pct,0) as commission_pct,
+        d.department_name
+      FROM employees e, departments d
+      WHERE e.department_id = d.department_id 
+      AND d.department_id = to_number(nvl(to_char(:did), to_char(d.department_id)))
+      ORDER BY e.employee_id ASC&quot;;
+
+  $un = $_SESSION['UN'];
+  $pw = $_SESSION['PW'];
+  $conn = db_connect($un, $pw);
+  if (!$conn) {
+    ui_print_error();
+  }
+   
+  $deptid = isset($_REQUEST['deptid']) ? $_REQUEST['deptid'] : null;
+  $bindargs = array();
+  array_push($bindargs, array('DID', $deptid, -1));
+  
+  $emp = db_do_query($conn, $query, OCI_FETCHSTATEMENT_BY_ROW, $bindargs);
+  if ($emp) {
+    if ($deptid == &quot;NULL&quot;) {
+      ui_print_header('Employees');
+    }
+    else {
+      ui_print_header('Employees: '.$emp[0]['DEPARTMENT_NAME']);
+    }
+    ui_print_employees($emp);
+    ui_print_footer(date('Y-m-d H:i:s'));
+  }
+  else {
+    ui_print_error();
+  }
+}</pre>
+      <pre>?&gt;</pre>
+      <p class="bodycopy"><span class="navheader">Notes </span></p>
+      <p class="bodycopy"> This fill depends on the include files referenced in the <font face="Courier New, Courier, mono">require()</font> calls.</p>
+      <p class="bodycopy">&nbsp;</p>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+</html>

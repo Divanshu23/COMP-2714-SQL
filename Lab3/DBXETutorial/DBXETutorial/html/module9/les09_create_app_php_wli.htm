@@ -1,0 +1,132 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/1whylearnit.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Creating an Application Using PHP</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!--
+ 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+
+<!--
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-1whylearnit.gif" width="484" height="52" usemap="#Map" border="0" alt="Why Learn It?"> 
+<map name="Map"> 
+  
+</map>
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3><span class="topstoryhead"><b>Creating an Application Using PHP</b></span></h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" -->
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="../module7/les07_storedproc_showme.htm">previous</a></font>|<font size="2"><a href="les09_getstart_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+    <!-- #EndEditable --></td>
+  </tr>
+  <tr>
+    <td width="10">
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy">Sheila's team is requested to create a Web application for the human resources (HR) information in the database tables. The company HR representatives would like to query departmental and employee information.</p>
+      <p class="bodycopy">Sheila's team decides to provide this functionality by using PHP running on a Web server. The PHP application needs to access Oracle Database 10<em>g</em> Release 2 Express Edition to obtain the data.</p>
+      <p class="bodycopy">You learn how to help Sheila install and configure the environment for PHP applications by performing the following tasks:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><span class="bodycopy">Test if the default Apache Web Server is running, and start it if required.</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodycopy">Configure the Apache Web server to enable user directories.</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><p><span class="bodycopy">Install Zend Core for Oracle, which provides a PHP engine to execute PHP code. </span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Configure Zend Core for Oracle to enable verbose display of error messages during development of the PHP application.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">You learn to <img src="images/les09_php_app.gif" width="280" height="180" align="right" hspace="5" alt="Insert Graphic Here"> create a PHP application that:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><span class="bodycopy">Connects to an Oracle database</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodycopy">Queries the <font face="Courier New, Courier, mono">DEPARMENTS</font> and <font face="Courier New, Courier, mono">EMPLOYEES</font> tables </span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><p><span class="bodycopy">Displays the queried database data in HTML table format</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">&nbsp;</p>
+      <p class="bodycopy">The PHP application comprises the following files:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">hr.php, which contains the PHP application control logic </td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">hr_cn.inc, an include file that defines database connection properties </td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><p class="bodycopy">hr_ui.inc, an include file containing user interface functions </td>
+          </tr>
+          <tr valign="top" class="bodycopy">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td>hr_db.inc, an include file containing database access logic</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy"><strong>Note:</strong> The PHP files can be accessed by a browser. The include (<span class="style1">.inc</span>) files are needed by the PHP file and are not intended to be accessed from a browser.</p>
+      <p class="bodycopy"><strong>Note</strong>: The .php files can be accessed by a browser. The include (.inc) files are needed by the PHP file and not intended to be accessed from a browser.</p>
+      <p class="bodycopy">If you are using Oracle JDeveloper 10<em>g</em> (10.1.2, or 9.0.5.2), you can download the <a href="javascript:;" onClick="MM_openBrWindow('http://www.oracle.com/technology/products/jdev/htdocs/partners/addins/exchange/php/index.html','phpext','status=yes,scrollbars=yes,resizable=yes,width=800,height=600')">PHP extension</a> from <a href="javascript:;" onClick="MM_openBrWindow('http://www.oracle.com/technology/products/jdev/htdocs/partners/addins/exchange/index.html','extexch','status=yes,scrollbars=yes,resizable=yes,width=800,height=600')">Extensions Exchange</a> on the Oracle Technology Network (OTN) to enable development of PHP applications in Oracle JDeveloper.</p>
+      <div align="right">
+        <p><font face="Arial, Helvetica, sans-serif" size="3"><i><b></b></i></font> </p>
+      </div>
+      <!-- #EndEditable --></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<!-- #BeginEditable "print" --><!-- #EndEditable -->
+</body>
+<!-- #EndTemplate --></html>

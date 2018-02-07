@@ -1,0 +1,65 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Getting Department Information</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Getting Department Information</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_logout_page_tm.htm">previous</a></font>|<font size="2"><a href="les09_get_emp_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy"><img src="images/les09_db_rows.gif" width="100" height="154" align="right">The <font face="Courier New, Courier, mono"><a href="javascript:;" onClick="MM_openBrWindow('les09_hr_php.htm#construct_departments','popup','scrollbars=yes,width=600,height=300')">construct_departments()</a></font> function:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><span class="bodycopy">Builds the query to obtain the department records</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodylink">Uses a query that joins the <font face="Courier New, Courier, mono">DEPARTMENTS</font>, <font face="Courier New, Courier, mono">EMPLOYEES</font>, <font face="Courier New, Courier, mono">LOCATIONS</font>, and <font face="Courier New, Courier, mono">COUNTRIES</font> tables to obtain extended information about a department, including the number of employees</span></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td><span class="bodylink">Calls <font face="Courier New, Courier, mono">ui_print_header()</font>, <font face="Courier New, Courier, mono">ui_print_department()</font>, and <font face="Courier New, Courier, mono">ui_print_footer()</font> to generate the response page</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy"><strong>Note:</strong> To display department data, <font face="Courier New, Courier, mono">construct_department() </font>calls <font face="Courier New, Courier, mono">ui_print_department()</font>, which creates a hypertext link with the &quot;number of employees&quot; field. When the user clicks the generated link, it issues an HTTP request to the <font face="Courier New, Courier, mono">hr.php</font> code with <font face="Courier New, Courier, mono">?do=showemp</font> and the associated department ID so that <font face="Courier New, Courier, mono">construct_employees()</font> is called to display the employees for that department.</p>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>

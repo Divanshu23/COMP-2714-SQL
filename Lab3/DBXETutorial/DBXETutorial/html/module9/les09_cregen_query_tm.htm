@@ -1,0 +1,91 @@
+<html lang="en"><!-- #BeginTemplate "/Templates/2tellme.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Creating a Generic Query Function</title>
+<link href="../../library/stylesheet.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../../Library/styles2.css" type="text/css">
+<script language="JavaScript">
+<!-- 
+function printWindow() {
+bV = parseInt(navigator.appVersion);
+if (bV >= 4) window.print();
+}
+// -->
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#663300" vlink="#996633" alink="#FF6600" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<noscript>The interactions in this eCourse require Javascript to be enabled.</noscript> 
+<img src="../../images/title-2tellme.gif" width="484" height="52" border="0" alt="Tell Me"> 
+<table summary="" width="465" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td width="10">&nbsp;</td>
+    <td><!-- #BeginEditable "topicheading" --> 
+      <h3 class="topstoryhead">Creating a Generic Query Function</h3>
+      <!-- #EndEditable --></td>
+    <td><!-- #BeginEditable "topicheading2" --> 
+      <div align="right"><img src="../../images/prev_arrow.gif" width="10" height="10" border="0" alt="Previous"> <font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#336699"><b><font size="2"><a href="les09_credb_connect_tm.htm">previous</a></font>|<font size="2"><a href="les09_cre_ui_tm.htm">next</a></font> <img src="../../images/next_arrow.gif" width="10" height="10" border="0" alt="Next Page"></b></font></div>
+     <!-- #EndEditable --></td>
+  </tr>
+  <tr> 
+<td width="10">    
+    <td colspan="4"><!-- #BeginEditable "text" --> 
+      <p class="bodycopy">The <a href="javascript:;" class="style3" onClick="MM_openBrWindow('les09_hr_db_inc.htm#db_do_query','popup','scrollbars=yes,width=600,height=300')">hr_db.inc</a> file contains a <font face="Courier New, Courier, mono">db_do_query()</font> function that performs the following steps (with OCI8 library calls shown) to execute a query, optionally with bind variables:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><p class="bodycopy">Parse the query string with <font face="Courier New, Courier, mono">oci_parse()</font>. </p></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Assign PHP variable values to query bind variables with <font face="Courier New, Courier, mono">oci_bind_by_name()</font>. </td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Execute the query with <font face="Courier New, Courier, mono">oci_execute()</font>.</td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy">Fetch the result set with <font face="Courier New, Courier, mono">oci_fetch_all()</font>. Take care using this OCI function with large result sets. </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">db_do_query()</font> function provides the following parameters:</p>
+      <table border="0" cellspacing="0" cellpadding="1">
+        <tbody>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodylink"><p class="bodycopy"><font face="Courier New, Courier, mono">$conn</font> for the connection identifier</p></td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy"><font face="Courier New, Courier, mono">$statement</font> containing the query string </td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy"><font face="Courier New, Courier, mono">$resulttype</font> specifying how the result set is return, either as an array of rows each containing an array of columns (the default <font face="Courier New, Courier, mono">OCI_FETCHSTATEMENT_BY_ROW</font>), or as an array of columns each containing an array of the row values in that column (<font face="Courier New, Courier, mono">OCI_FETCHSTATEMENT_BY_COLUMN</font>)</td>
+          </tr>
+          <tr valign="top">
+            <td><img src="../../images/bullet2.gif" width="10" height="10"></td>
+            <td class="bodycopy"><p><font face="Courier New, Courier, mono">$bindvars</font>: an optional array containing one or more bind variable arrays. Each bind variable array may contain the name of the bind variable in the query, the value to be associated with the bind variable, and a length of the value.</p>
+                <p>For <span class="style3">IN</span> bind variables, which provide input values to a query, the length can be set to -1. In this case, the OCI8 layer dynamically determines the length of the value. For <span class="style3">OUT</span> bind variables, for values returned by a query, the length must be set to a suitable value for the expected result. </p></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="bodycopy">The <font face="Courier New, Courier, mono">db_do_query()</font> function returns the result set as an array or rows or columns, depending on the value of the <font face="Courier New, Courier, mono">$resulttype</font> parameter. The function returns a <font face="Courier New, Courier, mono">false</font> value if an error occurs. </p>
+      <div align="right">
+        <p>&nbsp;</p>
+      </div>
+      <div align="right"></div>
+    <!-- #EndEditable --></td>
+  </tr>
+</table>
+</body>
+<!-- #EndTemplate --></html>
