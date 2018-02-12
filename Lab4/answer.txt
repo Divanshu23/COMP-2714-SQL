@@ -1,0 +1,14 @@
+d Review the page: Look at "Loaded Configuration File" (9th item down): In which folder is php.ini? 
+Loaded Configuration File	C:\php\php.ini
+
+e. Review the page: Is there any section header that refers to the configuration of Oracle oci8? ___________
+OCI8	Stig Bakken, Thies C. Arntzen, Andy Sautins, David Benson, Maxim Maletsky, Harald Radi, Antony Dovgal, Andi Gutmans, Wez Furlong, Christopher Jones, Oracle Corporation
+
+
+4.
+With the built-in PHP web server, how many sessions are there?
+1
+
+6.
+How many more rows than previously are returned?
+2
